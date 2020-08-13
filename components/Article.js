@@ -86,6 +86,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: "Chucky",
+    date: "8/13/2020",
+    firstParagraph: "im",
+    secondParagraph: "so",
+    thirdParagraph: "dumb"
   }
 ];
 
@@ -114,3 +121,52 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+//step 1 
+function articleMaker(title,date,firstParagraph,secondParagraph,thirdParagraph) {
+  const article = document.createElement("div");
+  const h2Title = document.createElement("h2");
+  const pDate = document.createElement("p");
+  const p1 = document.createElement("p");
+  const p2 = document.createElement("p");
+  const p3 = document.createElement("p");
+  const spanButton = document.createElement("span");
+  
+  article.appendChild(h2Title);
+  article.appendChild(pDate);
+  article.appendChild(p1);
+  article.appendChild(p2);
+  article.appendChild(p3);
+  article.appendChild(spanButton);
+  
+  article.classList.add("article");
+  pDate.classList.add("date");
+  spanButton.classList.add("expandButton");
+  
+  h2Title.textContent = title;
+  pDate.textContent = date;
+  p1.textContent = firstParagraph;
+  p2.textContent = secondParagraph;
+  p3.textContent = thirdParagraph;
+  spanButton.textContent = "Checking if spanbutton is displaying";
+  
+  //step 2
+  spanButton.addEventListener("click", (e) => { 
+    console.log(e.target);
+    article.classList.toggle("article-open");
+  });
+  
+  //step 3 
+  return article;
+  }
+  
+  //step 4 
+  const articles = document.querySelector(".articles");
+  console.log(articles);
+  data.forEach((item) => {
+    articles.appendChild(articleMaker(item.title,item.date,item.firstParagraph,item.secondParagraph,item.thirdParagraph));
+  });
+  
+//   //step 5 done look at the end of array
+
+
